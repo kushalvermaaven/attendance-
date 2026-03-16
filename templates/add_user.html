@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Add New User</h2>
+
+<div class="card-box" style="max-width:600px">
+
+<form method="POST">
+
+<div class="mb-3">
+<label class="form-label">Name</label>
+<input name="name" class="form-control" placeholder="Enter name" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input name="email" class="form-control" placeholder="Enter email" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Password</label>
+<input type="password" name="password" class="form-control" placeholder="Enter password" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Role</label>
+<select name="role" class="form-select">
+
+<option value="employee">Employee</option>
+<option value="intern">Intern</option>
+<option value="hr">HR</option>
+
+</select>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Department</label>
+<input name="department" class="form-control" placeholder="Department">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Technical Role</label>
+<input name="technical_role" class="form-control" placeholder="Technical Role">
+</div>
+
+<button class="btn btn-primary">Add User</button>
+
+</form>
+
+</div>
+
+{% endblock %}

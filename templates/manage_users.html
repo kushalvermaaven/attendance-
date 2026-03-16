@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Manage Users</h2>
+
+<div class="table-container">
+
+<table class="table table-striped">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for u in users %}
+
+<tr>
+
+<td>{{u.id}}</td>
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+<td>{{u.role}}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

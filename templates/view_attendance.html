@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Attendance Records</h2>
+
+<form method="GET" class="mb-4">
+
+<label>Select Date</label>
+
+<input type="date" name="date" class="form-control" style="width:250px">
+
+<button class="btn btn-primary mt-2">Filter</button>
+
+</form>
+
+
+<h3>Employee Attendance</h3>
+
+<div class="table-container">
+
+<table class="table table-striped">
+
+<tr>
+<th>Name</th>
+<th>Date</th>
+<th>Check In</th>
+<th>Check Out</th>
+<th>Status</th>
+</tr>
+
+{% for a in employee_data %}
+
+<tr>
+
+<td>{{a.name}}</td>
+<td>{{a.date}}</td>
+<td>{{a.check_in_time}}</td>
+<td>{{a.check_out_time}}</td>
+<td>{{a.status}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+<h3 class="mt-5">Intern Attendance</h3>
+
+<div class="table-container">
+
+<table class="table table-striped">
+
+<tr>
+<th>Name</th>
+<th>Date</th>
+<th>Check In</th>
+<th>Check Out</th>
+<th>Status</th>
+</tr>
+
+{% for a in intern_data %}
+
+<tr>
+
+<td>{{a.name}}</td>
+<td>{{a.date}}</td>
+<td>{{a.check_in_time}}</td>
+<td>{{a.check_out_time}}</td>
+<td>{{a.status}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

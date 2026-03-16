@@ -1,0 +1,26 @@
+<h2>HR Dashboard</h2>
+
+<a href="/add_user">Add Employee</a>
+<a href="/manage_users">Manage Users</a>
+<a href="/logout">Logout</a>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">HR Dashboard</h2>
+
+<div class="card-box">
+
+<a href="/add_user" class="btn btn-primary">Add Employee</a>
+
+<a href="/manage_users" class="btn btn-secondary">Manage Users</a>
+
+<a href="/view_attendance" class="btn btn-info">
+View Attendance
+</a>
+
+
+</div>
+
+{% endblock %}
