@@ -1,0 +1,19 @@
+<h2>Company Holidays</h2>
+
+<table border="1">
+
+<tr>
+<th>Name</th>
+<th>Date</th>
+</tr>
+
+{% for h in data %}
+
+<tr>
+<td>{{h.name}}</td>
+<td>{{h.date}}</td>
+</tr>
+
+{% endfor %}
+
+</table>

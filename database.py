@@ -49,3 +49,11 @@ conn.close()
 
 print("Database Created Successfully")
 
+leave_requests
+id
+user_id
+start_date
+end_date
+reason
+status
+
