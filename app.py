@@ -3,7 +3,9 @@ import sqlite3
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
-
+from werkzeug.security import generate_password_hash
+from flask import request, redirect, flash
+import sqlite3
 app = Flask(__name__)
 app.secret_key = "attendance_secret"
 
@@ -682,3 +684,42 @@ def calendar():
         return redirect("/")
 
     return render_template("calendar.html")
+
+@app.route('/add_user', methods=['GET', 'POST'])
+def add_user():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+        role = request.form['role']
+        department = request.form['department']
+        technical_role = request.form['technical_role']
+
+        # HASH PASSWORD
+        hashed_password = generate_password_hash(password)
+
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+
+        # CHECK EMAIL EXISTS
+        cursor.execute("SELECT * FROM users WHERE email=?", (email,))
+        existing_user = cursor.fetchone()
+
+        if existing_user:
+            flash("Email already exists!", "danger")
+            conn.close()
+            return redirect('/add_user')
+
+        # INSERT USER
+        cursor.execute("""
+            INSERT INTO users (name, email, password, role, department, technical_role)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (name, email, hashed_password, role, department, technical_role))
+
+        conn.commit()
+        conn.close()
+
+        flash("User added successfully!", "success")
+        return redirect('/add_user')
+
+    return render_template('add_user.html')

@@ -6,7 +6,7 @@
 
 <div class="card-box" style="max-width:600px">
 
-<form method="POST">
+<form method="POST" onsubmit="return validateForm()">
 
 <div class="mb-3">
 <label class="form-label">Name</label>
@@ -15,25 +15,52 @@
 
 <div class="mb-3">
 <label class="form-label">Email</label>
-<input name="email" class="form-control" placeholder="Enter email" required>
+<input type="email" name="email" class="form-control" placeholder="Enter email" required>
 </div>
 
+<!-- PASSWORD -->
 <div class="mb-3">
-<label class="form-label">Password</label>
-<input type="password" name="password" class="form-control" placeholder="Enter password" required>
+    <label class="form-label">Password</label>
+
+    <div class="position-relative">
+        <input type="password" id="password" name="password"
+               class="form-control pe-5" placeholder="Enter password" required>
+
+        <span onclick="togglePassword('password','eye1')" id="eye1"
+              class="position-absolute top-50 end-0 translate-middle-y me-3"
+              style="cursor:pointer;">
+            👁
+        </span>
+    </div>
+
+    <small id="passwordError" class="text-danger"></small>
+</div>
+<!-- CONFIRM PASSWORD -->
+<div class="mb-3">
+    <label class="form-label">Confirm Password</label>
+
+    <div class="position-relative">
+        <input type="password" id="confirm_password" name="confirm_password"
+               class="form-control pe-5" placeholder="Confirm password" required>
+
+        <span onclick="togglePassword('confirm_password','eye2')" id="eye2"
+              class="position-absolute top-50 end-0 translate-middle-y me-3"
+              style="cursor:pointer;">
+            👁
+        </span>
+    </div>
+
+    <small id="confirmError" class="text-danger"></small>
 </div>
 
 <div class="mb-3">
 <label class="form-label">Role</label>
 <select name="role" class="form-select">
-
 <option value="employee">Employee</option>
 <option value="intern">Intern</option>
 <option value="hr">HR</option>
-
 </select>
 </div>
-
 <div class="mb-3">
 <label class="form-label">Department</label>
 <input name="department" class="form-control" placeholder="Department">
@@ -44,7 +71,7 @@
 <input name="technical_role" class="form-control" placeholder="Technical Role">
 </div>
 
-<button class="btn btn-primary">Add User</button>
+<button class="btn btn-primary w-100">Add User</button>
 
 </form>
 

@@ -46,7 +46,46 @@ style="width:80px; margin-bottom:10px;">
 {% endblock %}
 
 </div>
+<script>
+function togglePassword(passwordId, eyeId) {
+    const passwordField = document.getElementById(passwordId);
+    const eyeIcon = document.getElementById(eyeId);
 
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.textContent = "🙈";
+    } else {
+        passwordField.type = "password";
+        eyeIcon.textContent = "👁";
+    }
+}
+
+// VALIDATION
+function validateForm() {
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm_password").value;
+
+    let valid = true;
+
+    // Reset errors
+    document.getElementById("passwordError").innerText = "";
+    document.getElementById("confirmError").innerText = "";
+
+    // Password length check
+    if (password.length < 8) {
+        document.getElementById("passwordError").innerText = "Password must be at least 8 characters";
+        valid = false;
+    }
+
+    // Match check
+    if (password !== confirm) {
+        document.getElementById("confirmError").innerText = "Passwords do not match";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
 </body>
 
 </html>
